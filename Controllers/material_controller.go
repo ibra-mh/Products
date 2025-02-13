@@ -9,7 +9,7 @@ import (
 	"Products/models"
 )
 
-// GetMaterials retrieves all materials
+
 func GetMaterials(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		rows, err := db.Query("SELECT * FROM material WHERE deleted_at IS NULL")
@@ -35,7 +35,7 @@ func GetMaterials(db *sql.DB) http.HandlerFunc {
 	}
 }
 
-// GetMaterialByID retrieves a material by ID
+
 func GetMaterialByID(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		vars := mux.Vars(r)
@@ -54,7 +54,7 @@ func GetMaterialByID(db *sql.DB) http.HandlerFunc {
 	}
 }
 
-// CreateMaterial creates a new material
+
 func CreateMaterial(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var material models.Material
@@ -75,7 +75,7 @@ func CreateMaterial(db *sql.DB) http.HandlerFunc {
 	}
 }
 
-// UpdateMaterial updates an existing material
+
 func UpdateMaterial(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		vars := mux.Vars(r)
@@ -98,7 +98,7 @@ func UpdateMaterial(db *sql.DB) http.HandlerFunc {
 	}
 }
 
-// DeleteMaterial deletes a material (soft delete)
+// soft delete
 func DeleteMaterial(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		vars := mux.Vars(r)

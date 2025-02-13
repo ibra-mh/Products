@@ -9,7 +9,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// GetOffers retrieves all offers
+
 func GetOffers(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		rows, err := db.Query("SELECT * FROM offer WHERE deleted_at IS NULL")
@@ -35,7 +35,6 @@ func GetOffers(db *sql.DB) http.HandlerFunc {
 	}
 }
 
-// GetOfferByID retrieves an offer by ID
 func GetOfferByID(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		vars := mux.Vars(r)
@@ -54,7 +53,6 @@ func GetOfferByID(db *sql.DB) http.HandlerFunc {
 	}
 }
 
-// CreateOffer creates a new offer
 func CreateOffer(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var offer models.Offer
@@ -75,7 +73,6 @@ func CreateOffer(db *sql.DB) http.HandlerFunc {
 	}
 }
 
-// UpdateOffer updates an existing offer
 func UpdateOffer(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		vars := mux.Vars(r)
@@ -98,7 +95,6 @@ func UpdateOffer(db *sql.DB) http.HandlerFunc {
 	}
 }
 
-// DeleteOffer deletes an offer (soft delete)
 func DeleteOffer(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		vars := mux.Vars(r)

@@ -9,7 +9,6 @@ import (
 	"net/http"
 )
 
-// GetOfferMaterials retrieves all offer-material relationships
 func GetOfferMaterials(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		rows, err := db.Query("SELECT * FROM offer_material WHERE deleted_at IS NULL")
@@ -35,7 +34,6 @@ func GetOfferMaterials(db *sql.DB) http.HandlerFunc {
 	}
 }
 
-// GetOfferMaterialByID retrieves a specific offer-material relationship by ID
 func GetOfferMaterialByID(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		vars := mux.Vars(r)
@@ -54,7 +52,6 @@ func GetOfferMaterialByID(db *sql.DB) http.HandlerFunc {
 	}
 }
 
-// CreateOfferMaterial creates a new offer-material relationship
 func CreateOfferMaterial(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var offerMaterial models.OfferMaterial
@@ -75,7 +72,6 @@ func CreateOfferMaterial(db *sql.DB) http.HandlerFunc {
 	}
 }
 
-// UpdateOfferMaterial updates an existing offer-material relationship
 func UpdateOfferMaterial(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		vars := mux.Vars(r)
@@ -98,7 +94,6 @@ func UpdateOfferMaterial(db *sql.DB) http.HandlerFunc {
 	}
 }
 
-// DeleteOfferMaterial deletes an offer-material relationship (soft delete)
 func DeleteOfferMaterial(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		vars := mux.Vars(r)
