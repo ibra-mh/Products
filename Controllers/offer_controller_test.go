@@ -77,7 +77,7 @@ func TestGetOffers(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			query := "SELECT * FROM offer WHERE deleted_at IS NULL"
+			query := `SELECT \* FROM offer WHERE deleted_at IS NULL`
 
 			if tc.mockError != nil {
 				mock.ExpectQuery(query).WillReturnError(tc.mockError)
@@ -113,6 +113,7 @@ func TestGetOffers(t *testing.T) {
 		})
 	}
 }
+
 
 func TestGetOfferByID(t *testing.T) {
 	type testCase struct {
@@ -315,6 +316,7 @@ func TestUpdateOffer(t *testing.T) {
 	}
 }
 
+
 func TestDeleteOffer(t *testing.T) {
 	db, mock, err := sqlmock.New()
 	assert.NoError(t, err)
@@ -322,7 +324,7 @@ func TestDeleteOffer(t *testing.T) {
 
 	testCases := []struct {
 		name         string
-		offerID      int
+		offerID      int // Now an int
 		expectedCode int
 		mockExec     func()
 	}{
@@ -376,4 +378,6 @@ func TestDeleteOffer(t *testing.T) {
 		})
 	}
 }
+
+
 
