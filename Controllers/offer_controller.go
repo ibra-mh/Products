@@ -42,31 +42,6 @@ func GetOffers(db *sql.DB) http.HandlerFunc {
 	}
 }
 
-// func GetOffers(db *sql.DB) http.HandlerFunc {
-// 	return func(w http.ResponseWriter, r *http.Request) {
-// 		rows, err := db.Query("SELECT * FROM offer WHERE deleted_at IS NULL")
-// 		if err != nil {
-// 			log.Fatal(err)
-// 		}
-// 		defer rows.Close()
-
-// 		offers := []models.Offer{}
-// 		for rows.Next() {
-// 			var offer models.Offer
-// 			if err := rows.Scan(&offer.ID, &offer.Name, &offer.CreatedAt, &offer.UpdatedAt, &offer.DeletedAt); err != nil {
-// 				log.Fatal(err)
-// 			}
-// 			offers = append(offers, offer)
-// 		}
-// 		if err := rows.Err(); err != nil {
-// 			log.Fatal(err)
-// 		}
-
-// 		w.Header().Set("Content-Type", "application/json")
-// 		json.NewEncoder(w).Encode(offers)
-// 	}
-// }
-
 func GetOfferByID(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		vars := mux.Vars(r)
